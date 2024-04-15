@@ -47,4 +47,13 @@ with ui.card():
         ui.card_header("Titanic Data")
         @render.data_frame  
         def titanic1_df():
-            return render.DataGrid(titanic_df)  
+            return render.DataGrid(titanic_df) 
+
+@render.plot(alt="A Seaborn histogram on penguin body mass in grams.")  
+def plot():  
+    ax = sns.histplot(data=titanic_df, x="class", y="age")  
+    ax.set_title("Passenger Class vs. Age")
+    ax.set_xlabel("Class")
+    ax.set_ylabel("Age")
+    return ax  
+
