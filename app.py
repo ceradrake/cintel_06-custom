@@ -15,21 +15,6 @@ ui.page_opts(title="Cera's Titanic Dashboard", fillable=True)
 #Add a theme 
 theme.superhero()
 
-#Reactive Calc
-@reactive.calc
-def filtered_data():
-    survival = input.alive()
-    sex = input.sex()
-    selected_class = input.selected_class()
-    
-    filtered_df = titanic_df[
-        (titanic_df['alive'] == alive) &
-        (titanic_df['sex'] == sex) &
-        (titanic_df['class'] == selected_class)
-    ]
-    
-    return filtered_df
-
 #Create the sidebar
 with ui.sidebar(open="open"):
     with ui.accordion():
@@ -39,4 +24,19 @@ with ui.sidebar(open="open"):
         with ui.accordion_panel("Gender"):
             ui.input_selectize("sex", "Sex of the Passenger", list(titanic_df["sex"].unique()))
         with ui.accordion_panel("Class"):
-            ui.input_selectize("class", "Class of the Passenger", list(titanic_df['class'].unique()))
+            ui.input_selectize("selected_class", "Class of the Passenger", list(titanic_df['class'].unique()))
+
+
+def filtered_df():
+    survival = input.alive() 
+    sex = input.sex()  
+    selected_class = input.selected_class()  
+    
+    # Filter the dataframe based on the input values
+    filtered_df = titanic_df[
+        (titanic_df['alive'] == survival) &
+        (titanic_df['sex'] == sex) &
+        (titanic_df['class'] == selected_class)
+    ]
+    
+    return filtered_df
