@@ -44,7 +44,7 @@ def filtered_df():
     return filtered_df
 
 with ui.card():
-        ui.card_header("Titanic Data"; style =)
+        ui.card_header("Titanic Data")
         @render.data_frame  
         def titanic1_df():
             return render.DataGrid(titanic_df)  
