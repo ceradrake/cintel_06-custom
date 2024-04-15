@@ -5,6 +5,8 @@ from shinywidgets import render_plotly
 import seaborn as sns
 import pandas as pd 
 from shinyswatch import theme 
+from faicons import icon_svg
+
 
 #Load the dataset
 titanic_df = sns.load_dataset("titanic")
@@ -40,3 +42,9 @@ def filtered_df():
     ]
     
     return filtered_df
+
+with ui.card():
+        ui.card_header("Titanic Data"; style =)
+        @render.data_frame  
+        def titanic1_df():
+            return render.DataGrid(titanic_df)  
